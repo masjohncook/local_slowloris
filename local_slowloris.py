@@ -27,7 +27,7 @@ def socketInitialization(host):
 
 
 if __name__ == "__main__":
-    host = "localhost"
+    host = 'localhost'
     count = 200
 
     print("Starting DoS Attack on {}. Connecting to {} socket".format(host, count))
