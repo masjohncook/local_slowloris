@@ -21,9 +21,9 @@ def setupSocket(host):
     return sock
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Use it like this: python {} example.com".format(sys.argv[0]))
-        sys.exit()
+    # if len(sys.argv) != 2:
+    #     print("Use it like this: python {} example.com".format(sys.argv[0]))
+    #     sys.exit()
 
     host = 'localhost'
     count = 200
