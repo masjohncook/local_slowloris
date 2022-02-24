@@ -26,7 +26,7 @@ def socketInitialization(host):
     return  sock
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     host = "localhost"
     count = 200
 
