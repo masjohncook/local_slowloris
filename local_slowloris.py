@@ -36,7 +36,7 @@ if __name__ == "__main__":
         try:
             print("Socket {}".format(_))
             sock = socketInitialization(host)
-        except socket.error:
+        except socket.errors():
             break
         socket.append(sock)
 
