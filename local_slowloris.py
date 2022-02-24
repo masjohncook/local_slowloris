@@ -55,7 +55,7 @@ if __name__ == "__main__":
                 sock = setupSocket(ip)
                 if sock:
                     sockets.append(sock)
-            except socket.error:
+            except socket.errors():
                 break
 
         time.sleep(15)
