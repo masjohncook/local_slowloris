@@ -30,7 +30,7 @@ if __name__ == "__main__":
     host = 'localhost'
     count = 200
 
-    print("Starting HTTP DoS Attack on {} with {} socket".format(host, count))
+    print("Starting HTTP DoS Attack on {} with {} sockets".format(host, count))
 
     for _ in range(count):
         try:
