@@ -36,11 +36,11 @@ if __name__ == "__main__":
     for _ in range(count):
         try:
             print("Socket {}".format(_))
-            sock = setupSocket(host)
+            sock = socketInitialization(host)
         except socket.error:
             break
 
-        socket.append(sock)
+        sockets.append(sock)
 
     while True:
         print("Connected to {} sockets. Sending headers...".format(len(sockets)))
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         for _ in range(count - len(sockets)):
             print("Re-opening closed sockets...")
             try:
-                sock = setupSocket(host)
+                sock = socketInitialization(host)
                 if sock:
                     sockets.append(sock)
             except socket.error:
