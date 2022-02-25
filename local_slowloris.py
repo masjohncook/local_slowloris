@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     for _ in range(count):
         try:
-            print("Socket {}".format(_))
+            #print("Socket {}".format(_))
             sock = socketInitialization(host)
         except socket.error:
             break
